@@ -6,6 +6,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :database_authenticatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
+  has_many :messages
+  has_many :user_chats
+  has_many :chats, through: :user_chats
+
   def jwt_payload
     super
   end
