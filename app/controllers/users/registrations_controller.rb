@@ -11,9 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       UserChat.create(user_id: resource.id, chat_id: global_chat.id, created_at: Time.now, updated_at: Time.now)
 
       # Response
-      render json: {
-        status: { code: 200, message: 'Signed up successfully!', data: resource }
-      }, status: :ok
+      render json: { user_id: resource.id }
 
     else
       render json: {
