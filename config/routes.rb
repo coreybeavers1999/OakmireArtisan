@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   get '/member_details' => 'members#index'
 
   # User
-  patch 'users/update_username' => 'users#update_username'
+  post 'users/update_username' => 'users#update_username'
 
   # Messaging
   post 'send_message' => 'messages#create_message'
-  get 'get_messages' => 'messages#get_messages'
+  get 'get_messages/:chat_id' => 'messages#get_messages'
 
 end

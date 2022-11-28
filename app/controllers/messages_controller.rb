@@ -8,7 +8,7 @@ class MessagesController < ApiController
 
     # Save message
     unless message.save
-      render json: { message: 'Failed to send message' }
+      render json: { message: 'Failed to send message' }, status: :unprocessable_entity
     end
   end
 

@@ -2,11 +2,11 @@ class UsersController < ApiController
 
   def update_username
     # Make sure username is unique
-    search = User.where(username: params[:username])
+    search = User.where('lower(username) = ?', params[:username].downcase).first
     taken = search.present?
 
     if taken
-      render json: { message: 'Username taken. Sorry.' }
+      render json: { message: 'Username taken. Sorry.' }, status: :unprocessable_entity
       return
     end
 
